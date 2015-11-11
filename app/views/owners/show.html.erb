@@ -1,12 +1,4 @@
-<p>
-  <strong>First name:</strong>
-  <%= @owner.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @owner.last_name %>
-</p>
+<h2><%= @owner.first_name %> <%= @owner.last_name %></h2>
 
 <p>
   <strong>Phone:</strong>
@@ -18,5 +10,14 @@
   <%= @owner.evac_waiver %>
 </p>
 
-<%= link_to 'Edit', edit_owner_path(@owner) %> |
-<%= link_to 'Back', owners_path %>
+<h3><%= @owner.first_name %>'s Furry Friends:</h3>
+<ul>
+  <% @owner.dogs.each do |dog| %>
+    <li><%= link_to dog.name, dog_path(dog) %></li>
+  <% end %>
+</ul>
+
+<p>
+  <%= link_to fa_icon('pencil', text: 'Edit'), edit_owner_path(@owner), class: 'btn btn-primary' %>
+  <%= link_to fa_icon('list', text: 'All Owners'), owners_path, class: 'btn btn-default' %>
+</p>
