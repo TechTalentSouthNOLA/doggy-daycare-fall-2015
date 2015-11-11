@@ -1,6 +1,7 @@
 class Owner < ActiveRecord::Base
   has_many :dogs
 
+  # TODO: Add phone number validation
   validates :first_name, :last_name, :phone, presence: true
 end
 

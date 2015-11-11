@@ -11,23 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, class: "form-control", placeholder: 'Jane' %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, class: "form-control", placeholder: 'Smith' %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, class: "form-control", placeholder: '504-555-1212' %>
   </div>
-  <div class="field">
-    <%= f.label :evac_waiver %><br>
+  <div class="field form-group">
+    <%= f.label :evac_waiver, "Evacuation Waiver" %><br>
     <%= f.check_box :evac_waiver %>
   </div>
+  <%# TODO: Fix button alignment or spacing %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-success" %>
   </div>
 <% end %>
