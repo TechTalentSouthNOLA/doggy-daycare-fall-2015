@@ -82,6 +82,10 @@ GEM
     multi_json (1.11.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    phony (2.15.8)
+    phony_rails (0.12.10)
+      activesupport (>= 3.0)
+      phony (~> 2.12)
     populator (1.0.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
@@ -166,6 +170,7 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
+  phony_rails
   populator
   quiet_assets
   rails (= 4.2.3)

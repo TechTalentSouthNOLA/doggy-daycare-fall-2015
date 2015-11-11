@@ -37,6 +37,7 @@ gem 'awesome_print'
 gem 'annotate'
 gem 'stamp'
 gem 'font-awesome-rails'
+gem 'phony_rails'
 
 group :development do
   gem 'starter_generators'

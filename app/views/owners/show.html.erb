@@ -2,7 +2,7 @@
 
 <p>
   <strong>Phone:</strong>
-  <%= @owner.phone %>
+  <%= @owner.phone.phony_formatted(format: :international, spaces: ' ') %>
 </p>
 
 <p>
