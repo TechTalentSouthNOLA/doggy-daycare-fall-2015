@@ -36,6 +36,7 @@ gem 'thin'
 gem 'awesome_print'
 gem 'annotate'
 gem 'stamp'
+gem 'font-awesome-rails'
 
 group :development do
   gem 'starter_generators'
