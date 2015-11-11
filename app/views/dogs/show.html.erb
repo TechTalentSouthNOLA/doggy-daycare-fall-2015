@@ -5,17 +5,17 @@
 
 <p>
   <strong>Breed:</strong>
-  <%= @dog.breed %>
+  <%= @dog.breed.try(:breed_name) %>
 </p>
 
 <p>
   <strong>Dob:</strong>
-  <%= @dog.dob %>
+  <%= @dog.dob.try(:stamp, 'Jan 1, 2015') %>
 </p>
 
 <p>
   <strong>Owner:</strong>
-  <%= @dog.owner %>
+  <%= @dog.owner.try(:last_name) %>
 </p>
 
 <p>

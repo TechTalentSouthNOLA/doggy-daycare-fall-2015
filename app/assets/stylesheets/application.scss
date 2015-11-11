@@ -14,6 +14,37 @@
  *= require_self
  */
 
+ @import "font-awesome";
+
 body {
-  padding-top: 70px;
+  padding-top: 60px;
+}
+
+.jumbotron {
+  background-image: image-url('doggy-nose.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+
+  h1 {
+    text-shadow: 1px 1px #333;
+  }
+
+  p.lead {
+    text-shadow: 1px 1px #333;
+    color: white;
+    margin: 30px 10px;
+  }
+}
+
+#team {
+  background-color: #DDDAD5;
+  // margin: 0;
+  // width: 100%;
+  // padding: 40px;
+}
+
+section {
+  margin-bottom: 40px;
 }
