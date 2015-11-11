@@ -24,8 +24,10 @@
     <%= f.text_field :phone, class: "form-control", placeholder: '504-555-1212' %>
   </div>
   <div class="field form-group">
-    <%= f.label :evac_waiver, "Evacuation Waiver" %><br>
-    <%= f.check_box :evac_waiver %>
+    <div class="checkbox-inline">
+      <%= f.check_box :evac_waiver %>
+      <%= f.label :evac_waiver, "Evacuation Waiver signed and accepted" %><br>
+    </div>
   </div>
   <%# TODO: Fix button alignment or spacing %>
   <div class="actions">

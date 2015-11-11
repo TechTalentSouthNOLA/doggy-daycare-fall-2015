@@ -48,3 +48,17 @@ body {
 section {
   margin-bottom: 40px;
 }
+
+input.checkbox {
+  margin-left: 0;
+}
+
+.btn-group {
+  .btn {
+    border-color: white;
+  }
+}
+
+a:hover {
+  text-decoration: none;
+}
