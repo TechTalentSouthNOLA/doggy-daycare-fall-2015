@@ -10,14 +10,18 @@ end
 #
 # Table name: dogs
 #
-#  id                 :integer          not null, primary key
-#  name               :string
-#  breed_id           :integer
-#  dob                :date
-#  owner_id           :integer
-#  medical_conditions :string
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id                  :integer          not null, primary key
+#  name                :string
+#  breed_id            :integer
+#  dob                 :date
+#  owner_id            :integer
+#  medical_conditions  :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  avatar_file_name    :string
+#  avatar_content_type :string
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
 #
 # Indexes
 #
