@@ -35,9 +35,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'thin'
 gem 'awesome_print'
 gem 'annotate'
-gem 'stamp'
+gem 'stamp', "~> 0.6"
 gem 'font-awesome-rails'
 gem 'phony_rails'
+gem "paperclip", "~> 4.3"
 
 group :development do
   gem 'starter_generators'
