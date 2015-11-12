@@ -4,7 +4,9 @@
 
     <%= render 'form' %>
 
-    <%= link_to 'Show', @dog %> |
-    <%= link_to 'Back', dogs_path %>
+    <br>
+    <%= link_to fa_icon('eye', text: 'Show Dog'), @dog, class: 'btn btn-default' %>
+    <%= link_to fa_icon('list', text: 'All Dogs'), dogs_path, class: 'btn btn-default' %>
+    <%= link_to fa_icon('trash', text: 'Delete'), @dog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %>
   </div>
 </div>

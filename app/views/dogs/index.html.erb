@@ -1,32 +1,28 @@
 <h1>Our Furry Friends</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Breed</th>
-      <th>Dob</th>
-      <th>Owner</th>
-      <th>Medical conditions</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row"></div>
 
-  <tbody>
-    <% @dogs.each do |dog| %>
-      <tr>
-        <td><%= dog.name %></td>
-        <td><%= dog.breed %></td>
-        <td><%= dog.dob %></td>
-        <td><%= dog.owner %></td>
-        <td><%= dog.medical_conditions %></td>
-        <td><%= link_to 'Show', dog %></td>
-        <td><%= link_to 'Edit', edit_dog_path(dog) %></td>
-        <td><%= link_to 'Destroy', dog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% @dogs.each do |dog| %>
+
+    <div class="col-xs-6 col-sm-4 col-md-3">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= dog.name %> <%= dog.owner.try(:last_name) %></h3>
+        </div>
+        <div class="panel-body">
+          <%= image_tag dog.avatar.url(:medium), class: 'img-rounded img-responsive' %>
+          <p>
+            <%= link_to fa_icon('eye', text: 'Show'), dog, class: 'btn btn-default btn-xs' %>
+            <%= link_to fa_icon('pencil', text: 'Edit'), edit_dog_path(dog), class: 'btn btn-default btn-xs' %>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  <% end %>
+</div>
 
 <br>
 
