@@ -8,6 +8,10 @@ class Owner < ActiveRecord::Base
   validates :first_name, :last_name, presence: true
   validates_plausible_phone :phone, normalized_country_code: 'US', presence: true
 
+  def last_comma_first
+    "#{last_name}, #{first_name}"
+  end
+
 end
 
 # == Schema Information

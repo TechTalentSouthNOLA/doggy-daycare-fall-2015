@@ -19,13 +19,14 @@
     <%= f.label :breed_id %><br>
     <%= f.collection_select :breed_id, @breeds, :id, :breed_name, {prompt: "Select breed"}, {class: "form-control"} %>
   </div>
+  <%# TODO:  Make years go further back and end at current year  %>
   <div class="field form-group">
     <%= f.label :dob %><br>
     <%= f.date_select :dob %>
   </div>
   <div class="field form-group">
     <%= f.label :owner_id %><br>
-    <%= f.collection_select :owner_id, @owners, :id, :last_name, {prompt: 'Select owner'}, {class: "form-control"} %>
+    <%= f.collection_select :owner_id, @owners, :id, :last_comma_first, {prompt: 'Select owner'}, {class: "form-control"} %>
   </div>
   <div class="field form-group">
     <%= f.label :medical_conditions %><br>
