@@ -1,36 +1,40 @@
-<p>
-  <strong>Name:</strong>
-  <%= @dog.name %>
-</p>
+<h1>Dog Details</h1>
 
-<p>
-  <strong>Breed:</strong>
-  <%= @dog.breed.try(:breed_name) %>
-</p>
+<div class="row">
+  <div class="col-sm-4">
+    <%= image_tag @dog.avatar.url(:medium), class: "img-responsive" %>
+  </div>
+  <div class="col-sm-8">
+    <h3><%= @dog.name + " " + @dog.owner.last_name %></h3>
 
-<p>
-  <strong>Dob:</strong>
-  <%= @dog.dob.try(:stamp, 'Jan 1, 2015') %>
-</p>
+    <p>
+      <strong>Owner:</strong>
+      <%= link_to "#{@dog.owner.first_name} #{@dog.owner.last_name}", @dog.owner %>
+    </p>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @dog.owner.try(:last_name) %>
-</p>
+    <p>
+      <strong>Breed:</strong>
+      <%= @dog.breed.breed_name %>
+    </p>
 
-<p>
-  <strong>Medical conditions:</strong>
-  <%= @dog.medical_conditions %>
-</p>
+    <p>
+      <strong>Dob:</strong>
+      <%= @dog.dob.stamp("March 1, 1999") %>
+    </p>
 
-<p>
-  <strong>In Daycare:</strong>
-  <%= @dog.in_daycare %>
-</p>
+    <p>
+      <strong>Medical conditions:</strong>
+      <%= @dog.medical_conditions %>
+    </p>
 
-<p>
-  <%= image_tag @dog.avatar.url(:medium) %>
-</p>
+    <p>
+      <strong>In Daycare:</strong>
+      <%= @dog.in_daycare ? fa_icon('check', class: 'fa-2x') : fa_icon('times', class: 'fa-2x') %>
+    </p>
 
-<%= link_to 'Edit', edit_dog_path(@dog) %> |
-<%= link_to 'Back', dogs_path %>
+    <p>
+      <%= link_to fa_icon('pencil', text: 'Edit Dog'), edit_dog_path(@dog), class: 'btn btn-primary' %>
+      <%= link_to fa_icon('grid', text: 'All Dogs'), dogs_path, class: 'btn btn-default' %>
+    </p>
+  </div>
+</div>
