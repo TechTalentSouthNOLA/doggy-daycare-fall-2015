@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-sm-4">
-    <%= image_tag @dog.avatar.url(:medium), class: "img-responsive" %>
+    <%= image_tag @dog.avatar.url(:medium), class: "img-responsive img-rounded" %>
   </div>
   <div class="col-sm-8">
     <h3><%= @dog.name + " " + @dog.owner.last_name %></h3>
@@ -24,7 +24,7 @@
 
     <p>
       <strong>Medical conditions:</strong>
-      <%= @dog.medical_conditions %>
+      <%= @dog.medical_conditions ? "(none listed)" : @dog.medical_conditions  %>
     </p>
 
     <p>
