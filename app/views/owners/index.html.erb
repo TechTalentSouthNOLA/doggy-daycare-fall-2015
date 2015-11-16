@@ -23,7 +23,7 @@
           <div class="btn-group">
             <%= link_to fa_icon('eye', text: 'Show'), owner, class: 'btn btn-default btn-sm' %>
             <%= link_to fa_icon('pencil', text: 'Edit'), edit_owner_path(owner), class: 'btn btn-default btn-sm' %>
-            <%= link_to fa_icon('pencil', text: 'Destroy'), owner, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-sm' %>
+            <%= link_to fa_icon('trash', text: 'Destroy'), owner, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-sm' %>
           </div>
         </td>
       </tr>
