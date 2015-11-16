@@ -1,7 +1,7 @@
 class DogsController < ApplicationController
   before_action :set_dog, only: [:show, :edit, :update, :destroy]
-  before_action :all_breeds, only: [:new, :edit, :index]
-  before_action :all_owners, only: [:new, :edit]
+  before_action :all_breeds, only: [:new, :edit, :index, :update, :create]
+  before_action :all_owners, only: [:new, :edit, :update, :create]
 
   # GET /dogs
   # GET /dogs.json
