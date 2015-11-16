@@ -4,7 +4,15 @@ class OwnersController < ApplicationController
   # GET /owners
   # GET /owners.json
   def index
-    @owners = Owner.all
+    if params[:search_owner]
+      @owners = Owner.where("first_name LIKE ?", "%#{params[:search_owner]}%")
+      if @owners.empty?
+        flash[:notice] = "Sorry, not results found"
+        @owners = Owner.all
+      end
+    else
+      @owners = Owner.all
+    end
   end
 
   # GET /owners/1
