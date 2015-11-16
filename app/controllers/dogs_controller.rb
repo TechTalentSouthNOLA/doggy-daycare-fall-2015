@@ -1,6 +1,6 @@
 class DogsController < ApplicationController
   before_action :set_dog, only: [:show, :edit, :update, :destroy]
-  before_action :all_breeds, only: [:new, :edit]
+  before_action :all_breeds, only: [:new, :edit, :index]
   before_action :all_owners, only: [:new, :edit]
 
   # GET /dogs
@@ -14,6 +14,8 @@ class DogsController < ApplicationController
         flash[:notice] = "Sorry, no result found."
         @dogs = Dog.all
       end
+    elsif params[:breed_id]
+      @dogs = Dog.where(breed_id: params[:breed_id])
     # else, give me all dogs
     else
       @dogs = Dog.all
