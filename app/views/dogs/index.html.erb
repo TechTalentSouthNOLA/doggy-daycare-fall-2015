@@ -1,5 +1,11 @@
 <h1>Our Furry Friends</h1>
 
+<!-- Loop to generate breed filter buttons -->
+<%= link_to "All", dogs_path, class: 'btn btn-default btn-xs' %>
+<% @breeds.each do |breed| %>
+  <a href="?breed_id=<%= breed.id %>" class="btn btn-default btn-xs"><%= breed.breed_name %></a>
+<% end %>
+
 <div class="row"></div>
 
   <% @dogs.each do |dog| %>
