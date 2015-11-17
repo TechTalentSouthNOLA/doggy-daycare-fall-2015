@@ -1,5 +1,13 @@
 <div class="row">
   <h1>Our Furry Friends</h1>
+    <%# TODO: fix formatting  %>
+  <!-- Dog search box -->
+    <%= form_tag("/dogs", method: :get, role: 'search', class: 'form-inline') do %>
+      <div class="form-group">
+        <%= text_field_tag(:search, nil, placeholder: 'Fido', class: 'form-control input-sm') %>
+      </div>
+      <%= submit_tag('Search', class: 'btn btn-default btn-sm') %>
+    <% end %>
 
   <p>
     <%= link_to fa_icon('plus', text: 'Add Dog'), new_dog_path, class: "btn btn-success" %>
