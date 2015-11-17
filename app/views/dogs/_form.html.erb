@@ -17,7 +17,6 @@
   </div>
   <div class="field form-group">
     <%= f.label :breed_id %><br>
-    <%# TODO: Fix no method error map for nil nil class error %>
     <%= f.collection_select :breed_id, @breeds, :id, :breed_name, {prompt: "Select breed"}, {class: "form-control"} %>
   </div>
   <%# TODO:  Make years go further back and end at current year  %>
