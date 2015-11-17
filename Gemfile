@@ -40,6 +40,7 @@ gem 'font-awesome-rails'
 gem 'phony_rails'
 gem "paperclip", "~> 4.3"
 gem 'tzinfo-data'
+gem 'devise'
 
 group :development do
   gem 'starter_generators'
