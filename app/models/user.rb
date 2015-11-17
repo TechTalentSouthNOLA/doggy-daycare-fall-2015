@@ -22,6 +22,7 @@ end
 #  last_sign_in_ip        :string
 #  created_at             :datetime
 #  updated_at             :datetime
+#  admin                  :boolean          default(FALSE)
 #
 # Indexes
 #

@@ -1,6 +1,7 @@
 class OwnersController < ApplicationController
   before_action :set_owner, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_admin!, except: [:index, :show]
 
   # GET /owners
   # GET /owners.json
@@ -8,7 +9,7 @@ class OwnersController < ApplicationController
     if params[:search_owner]
       @owners = Owner.where("first_name LIKE ? OR last_name LIKE ?", "%#{params[:search_owner]}%", "%#{params[:search_owner]}%")
       if @owners.empty?
-        flash[:notice] = "Sorry, not results found"
+        flash[:alert] = "Sorry, not results found"
         @owners = Owner.all
       end
     else

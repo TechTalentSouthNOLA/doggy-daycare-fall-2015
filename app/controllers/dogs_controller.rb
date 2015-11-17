@@ -3,6 +3,7 @@ class DogsController < ApplicationController
   before_action :all_breeds, only: [:new, :edit, :index, :update, :create]
   before_action :all_owners, only: [:new, :edit, :update, :create]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_admin!, except: [:index, :show]
 
   # GET /dogs
   # GET /dogs.json
@@ -12,7 +13,7 @@ class DogsController < ApplicationController
       @dogs = Dog.where("name LIKE ?", "%#{params[:search]}%")
       # if no dogs returns, give error message and list all dogs
       if @dogs.size.zero?
-        flash[:notice] = "Sorry, no result found."
+        flash[:alert] = "Sorry, no result found."
         @dogs = Dog.all
       end
     elsif params[:breed_id]
