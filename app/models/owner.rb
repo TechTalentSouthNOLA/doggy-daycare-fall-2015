@@ -4,7 +4,6 @@ class Owner < ActiveRecord::Base
   # Normalizes the attribute itself before validation
   phony_normalize :phone, default_country_code: 'US'
 
-  # TODO: Add phone number validation
   validates :first_name, :last_name, presence: true
   validates_plausible_phone :phone, normalized_country_code: 'US', presence: true
 

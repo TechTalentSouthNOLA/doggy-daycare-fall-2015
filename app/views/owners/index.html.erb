@@ -1,4 +1,11 @@
 <h1>Doggy Parents</h1>
+<!-- Owner search box -->
+<%= form_tag("/owners", method: :get, role: 'search', class: 'form-inline') do %>
+  <div class="form-group">
+    <%= text_field_tag(:search_owner, nil, placeholder: 'Jane', class: 'form-control input-sm') %>
+  </div>
+  <%= submit_tag('Search', class: 'btn btn-default btn-sm') %>
+<% end %>
 
 <table class="table table-striped table-hover">
   <thead>
@@ -23,7 +30,7 @@
           <div class="btn-group">
             <%= link_to fa_icon('eye', text: 'Show'), owner, class: 'btn btn-default btn-sm' %>
             <%= link_to fa_icon('pencil', text: 'Edit'), edit_owner_path(owner), class: 'btn btn-default btn-sm' %>
-            <%= link_to fa_icon('pencil', text: 'Destroy'), owner, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-sm' %>
+            <%= link_to fa_icon('trash', text: 'Destroy'), owner, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-sm' %>
           </div>
         </td>
       </tr>

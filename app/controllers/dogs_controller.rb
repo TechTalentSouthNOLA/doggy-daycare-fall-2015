@@ -1,10 +1,27 @@
 class DogsController < ApplicationController
   before_action :set_dog, only: [:show, :edit, :update, :destroy]
+  before_action :all_breeds, only: [:new, :edit, :index, :update, :create]
+  before_action :all_owners, only: [:new, :edit, :update, :create]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_admin!, except: [:index, :show]
 
   # GET /dogs
   # GET /dogs.json
   def index
-    @dogs = Dog.all
+    # if we have the parameter, then only give me dogs that match
+    if params[:search]
+      @dogs = Dog.where("name LIKE ?", "%#{params[:search]}%")
+      # if no dogs returns, give error message and list all dogs
+      if @dogs.size.zero?
+        flash[:alert] = "Sorry, no result found."
+        @dogs = Dog.all
+      end
+    elsif params[:breed_id]
+      @dogs = Dog.where(breed_id: params[:breed_id])
+    # else, give me all dogs
+    else
+      @dogs = Dog.all
+    end
   end
 
   # GET /dogs/1
@@ -15,14 +32,10 @@ class DogsController < ApplicationController
   # GET /dogs/new
   def new
     @dog = Dog.new
-    @breeds = Breed.order("breed_name")
-    @owners = Owner.order("last_name")
   end
 
   # GET /dogs/1/edit
   def edit
-    @breeds = Breed.order("breed_name")
-    @owners = Owner.order("last_name")
   end
 
   # POST /dogs
@@ -46,7 +59,7 @@ class DogsController < ApplicationController
   def update
     respond_to do |format|
       if @dog.update(dog_params)
-        format.html { redirect_to @dog, notice: 'Dog was successfully updated.' }
+        format.html { redirect_to dogs_path, notice: 'Dog was successfully updated.' }
         format.json { render :show, status: :ok, location: @dog }
       else
         format.html { render :edit }
@@ -66,6 +79,15 @@ class DogsController < ApplicationController
   end
 
   private
+
+    def all_breeds
+      @breeds = Breed.order("breed_name")
+    end
+
+    def all_owners
+      @owners = Owner.order("last_name")
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_dog
       @dog = Dog.find(params[:id])

@@ -11,13 +11,28 @@
 </p>
 
 <h3><%= @owner.first_name %>'s Furry Friends:</h3>
-<ul>
+<div class="row">
   <% @owner.dogs.each do |dog| %>
-    <li><%= link_to dog.name, dog_path(dog) %></li>
+    <div class="col-xs-6 col-sm-4 col-md-3">
+
+      <div class="panel <%= dog.in_daycare ? 'panel-success' : 'panel-default'  %>">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= dog.name %> <%= dog.owner.try(:last_name) %></h3>
+        </div>
+        <div class="panel-body">
+          <%= image_tag dog.avatar.url(:medium), class: 'img-rounded img-responsive' %>
+          <p>
+            <%= link_to fa_icon('eye', text: 'Show'), dog, class: 'btn btn-default btn-xs' %>
+            <%= link_to fa_icon('pencil', text: 'Edit'), edit_dog_path(dog), class: 'btn btn-default btn-xs' %>
+          </p>
+        </div>
+      </div>
+
+    </div>
   <% end %>
-</ul>
+</div>
 
 <p>
-  <%= link_to fa_icon('pencil', text: 'Edit'), edit_owner_path(@owner), class: 'btn btn-primary' %>
+  <%= link_to fa_icon('pencil', text: 'Edit Owner'), edit_owner_path(@owner), class: 'btn btn-primary' %>
   <%= link_to fa_icon('list', text: 'All Owners'), owners_path, class: 'btn btn-default' %>
 </p>

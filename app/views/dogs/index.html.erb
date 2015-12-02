@@ -1,6 +1,27 @@
-<h1>Our Furry Friends</h1>
+<div class="row">
+  <div class="col-sm-12">
+  <h1>Our Furry Friends</h1>
+    <!-- Dog search box -->
+    <%= form_tag("/dogs", method: :get, role: 'search', class: 'form-inline') do %>
+      <div class="form-group">
+        <%= text_field_tag(:search, nil, placeholder: 'Fido', class: 'form-control input-sm') %>
+      </div>
+      <%= submit_tag('Search', class: 'btn btn-default btn-sm') %>
+      <%= link_to fa_icon('plus', text: 'Add Dog'), new_dog_path, class: "btn btn-success btn-sm" %>
+    <% end %>
 
-<div class="row"></div>
+    <br>
+    <!-- Loop to generate breed filter buttons -->
+    <p>
+      <%= link_to "All", dogs_path, class: 'btn btn-default btn-xs' %>
+      <% @breeds.each do |breed| %>
+        <a href="?breed_id=<%= breed.id %>" class="btn btn-default btn-xs"><%= breed.breed_name %></a>
+      <% end %>
+    </p>
+  </div>
+</div>
+
+<div class="row">
 
   <% @dogs.each do |dog| %>
 
@@ -11,10 +32,20 @@
           <h3 class="panel-title"><%= dog.name %> <%= dog.owner.try(:last_name) %></h3>
         </div>
         <div class="panel-body">
-          <%= image_tag dog.avatar.url(:medium), class: 'img-rounded img-responsive' %>
+          <%= link_to dog do %>
+            <%= image_tag dog.avatar.url(:medium), class: 'img-rounded img-responsive' %>
+          <% end %>
           <p>
-            <%= link_to fa_icon('eye', text: 'Show'), dog, class: 'btn btn-default btn-xs' %>
-            <%= link_to fa_icon('pencil', text: 'Edit'), edit_dog_path(dog), class: 'btn btn-default btn-xs' %>
+            <!-- Check in/out buttons -->
+            <%= form_for(dog, url: dog_path(dog), html: {class: 'form-inline'}) do |f| %>
+              <% if dog.in_daycare %>
+                <%= f.hidden_field :in_daycare, value: false %>
+                <%= f.submit "Check Out", class: 'btn btn-success btn-xs' %>
+              <% else %>
+                <%= f.hidden_field :in_daycare, value: true %>
+                <%= f.submit "Check In", class: 'btn btn-default btn-xs' %>
+              <% end %>
+            <% end %>
           </p>
         </div>
       </div>
@@ -23,7 +54,3 @@
 
   <% end %>
 </div>
-
-<br>
-
-<%= link_to fa_icon('plus', text: 'Add Dog'), new_dog_path, class: "btn btn-default" %>
